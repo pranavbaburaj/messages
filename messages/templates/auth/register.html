@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <h1>Register</h1>
+    <div class="f">
+        <br>
+    </div>
+    <div class="f">
+        {% if messages %}
+            {% for x in messages %}
+                <div class="error" style="color: red;">
+                    {{ x }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <form action="/save/" method="post">
+            {% csrf_token %}
+            <div class="f">
+                <input type="text" placeholder="fullname" name="name" required/>
+            </div>
+            <div class="f">
+                <input type="text" placeholder="username" name="username" required/>
+            </div>
+            <div class="f">
+                <input type="password" placeholder="password" name="password" required/>
+            </div>
+            <div class="f">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        <div class="f">
+            <a href="/">Have an account?</a>
+        </div>
+</body>
+</html>

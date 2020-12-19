@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to messages</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div class="intro">
+        <header><h1>MessageMe</h1></header>
+    </div>
+    <div class="f">
+        {% if messages %}
+            {% for x in messages %}
+                <div class="error" style="color: red;">
+                    {{ x }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="login">
+        <h3>Login</h3>
+        <form action="/login/" method="post">
+            {% csrf_token %}
+            <div class="f">
+                <input type="text" placeholder="username" name="username">
+            </div>
+            <div class="f">
+                <input type="password" placeholder="password" name="password">
+            </div>
+            <div class="f">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="f">
+            <a href="/register/">Create an account</a>
+        </div>
+    </div>
+</body>
+</html>
