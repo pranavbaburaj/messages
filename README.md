@@ -2,13 +2,11 @@
 ***A simple messaging application***
 
 ## Commands
-|run|python manage.py runserver  |
-|-|--|
-<hr>
-Or
-<hr>
+Run the application
+`python manage.py runserver`
 
-    run.bat
+Create a new superuser
+`python manage.py createsuperuser`
 
 ## Features
 
