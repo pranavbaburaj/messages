@@ -1,54 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url("./form-elements.css");
+@import url('./form-elements.css');
 
-:root{
-    --foreground : #7289DA;
-    --background : #36393F;
-    --backhard : #202225;
+:root {
+  --foreground: #7289da;
+  --background: #36393f;
+  --backhard: #202225;
 }
 
-*{
-    margin : 0;
-    padding: 0;
-    overflow : hidden;
-    font-family: sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: sans-serif;
 }
 
 body {
-    background : var(--backhard);
-    overflow: hidden;
+  background: var(--backhard);
+  overflow: hidden;
 }
 
 /* All elements in the html file is 
 contained inside of the bodycontainer class
 */
 .bodycontainer {
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 }
 
 /* The header text */
 .intro-text {
-    color : var(--foreground);
-    text-align: center;
-    font-size: 35px;
-    font-family: Roboto;
-    font-weight: 400;
+  color: var(--foreground);
+  text-align: center;
+  font-size: 35px;
+  font-family: Roboto;
+  font-weight: 400;
 }
 
 .intro-text i {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 /* The div holding the .intro-text*/
-.intro{
-    margin-top : 20%;
+.intro {
+  margin-top: 20%;
 }
 
 /* Text selection */
 .intro-text::selection,
-.intro-text i::selection
- {
-    background-color: inherit;
-    color : inherit;
+.intro-text i::selection {
+  background-color: inherit;
+  color: inherit;
 }

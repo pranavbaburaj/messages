@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import path
 from authentication.views import *
@@ -10,9 +9,11 @@ def logout(request):
     del request.session['user']
     return HttpResponseRedirect("/")
 
+
 def hello(request, drs):
     return HttpResponse(drs)
-    
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', register),

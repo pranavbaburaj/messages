@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Users
 from django.contrib import messages
 
+
 def index(request):
     try:
         data = request.session['user']
@@ -13,6 +14,7 @@ def index(request):
             return render(request, "auth/register.html")
     except:
         return render(request, "auth/register.html")
+
 
 def login(request):
 
@@ -26,11 +28,10 @@ def login(request):
 
         return HttpResponseRedirect("/inbox/")
     else:
-        messages.add_message(request, messages.INFO, 'Wrong username or password')
+        messages.add_message(request, messages.INFO,
+                             'Wrong username or password')
         return HttpResponseRedirect("/")
 
-    
-                    
 
 def register(request):
 
@@ -44,6 +45,7 @@ def register(request):
     except:
         return render(request, "auth/index.html")
 
+
 def save(request):
     name = request.POST['name']
     username = request.POST['username']
@@ -56,8 +58,5 @@ def save(request):
         data = Users(name=name, username=username, password=password)
         data.save()
         request.session['user'] = [name, username, password]
-        
+
         return HttpResponseRedirect("/")
-
-
-        

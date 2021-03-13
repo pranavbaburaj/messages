@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Messages(models.Model):
     from_person = models.TextField()
     to_person = models.TextField()
@@ -12,5 +13,3 @@ class Messages(models.Model):
 
     def __repr__(self):
         return "Success"
-
-
