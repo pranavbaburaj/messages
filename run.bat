@@ -1,2 +1,2 @@
 @ECHO OFF
-cls & python messages/manage.py runserver
+cls & python -B messages/manage.py runserver
