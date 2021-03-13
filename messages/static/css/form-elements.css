@@ -1,0 +1,52 @@
+/* The login form */
+.login {
+    margin : 20px 20px 20px 20px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding : 15px 15px 15px 15px;
+    border : 2px solid var(--background);
+    margin-top: 30px;
+}
+
+.fi {
+    margin : 15px;
+}
+
+/* The input boxes */
+.fi input {
+    background-color: var(--background);
+    border : none;
+    outline : none;
+    padding : 10px;
+    font-size: 15px;
+    font-family: Roboto;
+    border-radius: 6px;
+    color: var(--foreground);
+}
+
+/* The input placeholders */
+.fi input::placeholder {
+    color: #6d6d6d;
+    font-style: italic;
+    font-size: 15px;
+}
+
+/* The submit button */
+button[type="submit"] {
+    background-color: var(--foreground);
+    outline: none;
+    border : none;
+    width : 100%;
+    margin-top : 10px;
+    border-radius: 5px;
+    padding : 5px;
+    text-align: center;
+    font-size: 15px;
+    font-family: Roboto;
+    font-style: bold;
+    transition: opacity 0.3s;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.9;
+}
