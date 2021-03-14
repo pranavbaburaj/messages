@@ -1,20 +1,20 @@
 export class FormElement {
-    constructor(formClassName, formFields, formPost, formType){
-        this.className = formClassName;
-        this.formFields = formFields;
-        this.formPost = this.verifyPostLink(formPost)
-        this.formType = formType
+    constructor(formClassName, formFields, formPost, formType) {
+        this.className = formClassName;     // the class name
+        this.formFields = formFields;   // the fields in the form
+        this.formPost = this.verifyPostLink(formPost)   // the link to post the data
+        this.formType = formType    // login or sign in
     }
 
     verifyPostLink = (formPostLink) => {
         const isLink = formPostLink.startsWith("/")
-        if (!isLink){console.error("Not a Link")}
+        if (!isLink) { console.error("Not a Link") }
         return isLink
     }
 
     getAllFields = () => {
         let fieldTemplate = ""
-        for(let index = 0; index < this.formFields.length; index++){
+        for (let index = 0; index < this.formFields.length; index++) {
             const currentField = this.formFields[index]
             fieldTemplate += `
             <div class="fi">
@@ -27,7 +27,7 @@ export class FormElement {
     }
 
     buttonText = () => {
-        if(this.formType == "Login"){
+        if (this.formType == "Login") {
             return "Login"
         } else {
             return "Sign In"
