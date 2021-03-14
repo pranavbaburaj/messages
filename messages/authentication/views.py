@@ -32,6 +32,11 @@ def login(request):
                              'Wrong username or password')
         return HttpResponseRedirect("/")
 
+def has_user(request, username):
+    return HttpResponse(
+        len(Users.objects.filter(username=username)) is not 0
+    )
+
 
 def register(request):
 

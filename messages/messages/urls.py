@@ -24,5 +24,6 @@ urlpatterns = [
     path('inbox/', inbox),
     path('compose/', compose),
     path('view/from/<from_person>/<to_person>/<id>/', view),
-    path('delete/<to_person>/<id>/', delete)
+    path('delete/<to_person>/<id>/', delete),
+    path('user/exists/<username>', has_user)
 ]

@@ -3,15 +3,41 @@ import { FormElement } from "./form.js"
 // selectors
 const LOGIN_FORM_CONTAINER = document.querySelector(".login-container")
 
-// xhr to send http requests
-export const xhr = new XMLHttpRequest()
+export const booleanValue = (string) => string === 'false' ? false : !!string
+
+export function isCharacterKeyPress(evt) {
+    if (typeof evt.which == "undefined") {
+        return true;
+    } else if (typeof evt.which == "number" && evt.which > 0) {
+        return !evt.ctrlKey && !evt.metaKey && !evt.altKey && evt.which != 8;
+    }
+    return false;
+}
+
+function userAvailavbility(event, element){
+    if(element.name == "username"){
+
+
+        if(event.altKey){
+            element.value += event.key.toString()
+        }
+
+        if(element.value.toString().length > 0){
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", `/user/exists/${element.value}`, false ); // false for synchronous request
+            xmlHttp.send( null );
+            
+            console.log(xmlHttp.responseText)
+        }
+    } 
+}
 
 function renderLoginForm() {
     const loginForm = new FormElement(
         "login",
         [
-            { type: "input", "placeHolder": "username", "name": "username" },
-            { type: "password", "placeHolder": "password", "name": "password" },
+            { type: "input", "placeHolder": "username", "name": "username" , "onKeyDown" : userAvailavbility},
+            { type: "password", "placeHolder": "password", "name": "password" , "onKeyDown" : userAvailavbility},
         ],
         "/login/",
         "Login"
@@ -25,6 +51,11 @@ function renderLoginForm() {
 // login form rendering
 if (window.location.pathname == "/") {
     renderLoginForm()
+
+    const userNameElement = document.querySelector(".username")
+    userNameElement.addEventListener('keydown', (event) => {
+        userAvailavbility(event, userNameElement)
+    } )
 }
 
 

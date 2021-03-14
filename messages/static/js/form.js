@@ -1,3 +1,5 @@
+
+
 export class FormElement {
     constructor(formClassName, formFields, formPost, formType) {
         this.className = formClassName;     // the class name
@@ -12,13 +14,14 @@ export class FormElement {
         return isLink
     }
 
+
     getAllFields = () => {
         let fieldTemplate = ""
         for (let index = 0; index < this.formFields.length; index++) {
             const currentField = this.formFields[index]
             fieldTemplate += `
             <div class="fi">
-                    <input type="${currentField.type}" placeholder="${currentField.placeHolder}" name="${currentField.name}" autocomplete="off">
+                    <input class="${currentField.name}" type="${currentField.type}" placeholder="${currentField.placeHolder}" name="${currentField.name}" autocomplete="off">
             </div>
             `
         }
@@ -48,5 +51,6 @@ export class FormElement {
 
         selector.innerHTML = template.toString()
     }
+
 }
 
