@@ -21,7 +21,7 @@
                 {% endfor %}
             {% endif %}
         </div>
-        <div class="login">
+        <!-- <div class="login">
             <form action="/login/" method="post">
                 {% csrf_token %}
                 <div class="fi">
@@ -37,7 +37,9 @@
             <div class="f">
                 <a href="/register/">Create an account</a>
             </div>
-        </div>
+        </div> -->
+        <div class="login-container"></div>
     </div>
+    <script src="{% static 'js/index.js' %}" type="module"></script>
 </body>
 </html>
