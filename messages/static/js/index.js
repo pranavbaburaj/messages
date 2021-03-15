@@ -15,8 +15,25 @@ export function isCharacterKeyPress(evt) {
 }
 
 function userAvailavbility(event, element){
-    if(element.name == "username"){
+    const checkImportantKeys = (keyEvent) => {
+        console.log(keyEvent)
+        return true
+    }
 
+    if(element.name == "username"){
+        if(!checkImportantKeys(event)){
+            event.preventDefault()
+        }else{
+            return 0;
+        }
+
+        const checkKey = (keyPressed, value) => {
+            return keyPressed.code.toString().includes(value)
+        }
+
+        if(checkKey(event, "Key") || checkKey(event, "Numpad") || checkKey(event, "Digit")){    
+            element.value += event.key.toString()
+        }
 
         if(event.altKey){
             element.value += event.key.toString()
