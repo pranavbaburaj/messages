@@ -1,4 +1,5 @@
 import { FormElement } from "./form.js"
+import { cannotContainUsername } from "./constants.js"
 
 // selectors
 const LOGIN_FORM_CONTAINER = document.querySelector(".login-container")
@@ -15,17 +16,27 @@ export function isCharacterKeyPress(evt) {
 }
 
 function userAvailavbility(event, element){
+
+
     const checkImportantKeys = (keyEvent) => {
-        console.log(keyEvent)
-        return true
+        return (
+            keyEvent.ctrlKey && keyEvent.keyCode == 65 ||
+            keyEvent.ctrlKey && keyEvent.keyCode == 88 ||
+            keyEvent.ctrlKey && keyEvent.keyCode == 67 ||
+            keyEvent.code == "Backspace" ||
+            cannotContainUsername(keyEvent)
+        )
     }
 
     if(element.name == "username"){
+
         if(!checkImportantKeys(event)){
             event.preventDefault()
         }else{
             return 0;
         }
+
+        
 
         const checkKey = (keyPressed, value) => {
             return keyPressed.code.toString().includes(value)
@@ -38,6 +49,7 @@ function userAvailavbility(event, element){
         if(event.altKey){
             element.value += event.key.toString()
         }
+
 
         if(element.value.toString().length > 0){
             var xmlHttp = new XMLHttpRequest();
