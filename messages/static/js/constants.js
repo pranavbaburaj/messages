@@ -25,3 +25,7 @@ export const cannotContainUsername = (key) => {
         key.shiftKey && key.keyCode == 186
         )
 }
+
+
+// the title of the PAGE
+export const MESSAGE_ME_TITLE = "MessageMe"

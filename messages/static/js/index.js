@@ -16,6 +16,13 @@ export function isCharacterKeyPress(evt) {
 }
 
 function userAvailavbility(event, element){
+    
+
+    const removeUserMention = (element) => {
+        if(element.value.toString().includes("@")){
+            element.value = element.value.replace("@", "_")
+        }
+    }
 
 
     const checkImportantKeys = (keyEvent) => {
@@ -23,19 +30,18 @@ function userAvailavbility(event, element){
             keyEvent.ctrlKey && keyEvent.keyCode == 65 ||
             keyEvent.ctrlKey && keyEvent.keyCode == 88 ||
             keyEvent.ctrlKey && keyEvent.keyCode == 67 ||
-            keyEvent.code == "Backspace" ||
-            cannotContainUsername(keyEvent)
+            keyEvent.ctrlKey && keyEvent.keyCode == 86 ||
+            keyEvent.code == "Backspace"
         )
     }
 
     if(element.name == "username"){
-
         if(!checkImportantKeys(event)){
             event.preventDefault()
         }else{
+
             return 0;
         }
-
         
 
         const checkKey = (keyPressed, value) => {
@@ -50,8 +56,10 @@ function userAvailavbility(event, element){
             element.value += event.key.toString()
         }
 
-
+        removeUserMention(element)
         if(element.value.toString().length > 0){
+
+            
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open( "GET", `/user/exists/${element.value}`, false ); // false for synchronous request
             xmlHttp.send( null );
