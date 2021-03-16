@@ -1,7 +1,7 @@
-export function findButtonByType(buttonList, buttonType, buttonText){
-    for(let index=0; index<buttonList.length; index++){
+export function findButtonByType(buttonList, buttonType, buttonText) {
+    for (let index = 0; index < buttonList.length; index++) {
         const currentButtonElement = buttonList[index]
-        if(currentButtonElement.type == buttonType && currentButtonElement.innerHTML == buttonText){
+        if (currentButtonElement.type == buttonType && currentButtonElement.innerHTML == buttonText) {
             return currentButtonElement
         }
     }
@@ -11,16 +11,16 @@ export function findButtonByType(buttonList, buttonType, buttonText){
 const getInputByName = (inputBoxes, findName) => {
     let matchingBoxList = new Array()
 
-    for(let idx=0; idx<inputBoxes.length; idx++){
+    for (let idx = 0; idx < inputBoxes.length; idx++) {
         const currentElement = inputBoxes[idx]
-        if(currentElement.name == findName.toString()){
+        if (currentElement.name == findName.toString()) {
             matchingBoxList.push(
                 currentElement
             )
         }
     }
 
-    if(matchingBoxList.length > 1){
+    if (matchingBoxList.length > 1) {
         throw Error(`Expected a single list, but got ${matchingBoxList.length}`)
     }
 
@@ -28,7 +28,7 @@ const getInputByName = (inputBoxes, findName) => {
 }
 
 export class FormSubmissionButton {
-    constructor(buttonObject, postDataUrl, parameters){
+    constructor(buttonObject, postDataUrl, parameters) {
         this.buttonObject = buttonObject
         this.postDataUrl = this.getPostUrl(postDataUrl)
 
@@ -39,18 +39,18 @@ export class FormSubmissionButton {
 
     addObjectEventListeners = (buttonObject) => {
 
-        if(buttonObject == null){ return null; }
+        if (buttonObject == null) { return null; }
         else {
             buttonObject.classList.add(
                 `${buttonObject.innerHTML.toString().toLowerCase()}-submit`
             )
-            buttonObject.addEventListener('click', function(event) {
+            buttonObject.addEventListener('click', function (event) {
                 const inputBoxes = document.getElementsByTagName("input")
-                if(inputBoxes.length == 2){
+                if (inputBoxes.length == 2) {
                     let userName = getInputByName(inputBoxes, "username")
                     let passwordText = getInputByName(inputBoxes, "password")
 
-                    if(userName.value.length == 0 || passwordText.value.length == 0){
+                    if (userName.value.length == 0 || passwordText.value.length == 0) {
                         return null
                     } else {
                         userName.value = userName.value.toString().replace(
@@ -69,7 +69,7 @@ export class FormSubmissionButton {
 
     // verify the url to start and end with a slashes
     getPostUrl = (postUrl) => {
-        if (postUrl.endsWith("/") && postUrl.startsWith("/")){
+        if (postUrl.endsWith("/") && postUrl.startsWith("/")) {
             return `${window.location.origin}${postUrl.toString()}`
         } else {
             throw Error("No a valid URL")

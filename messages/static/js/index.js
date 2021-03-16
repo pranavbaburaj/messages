@@ -21,17 +21,17 @@ export function isCharacterKeyPress(evt) {
     return false;
 }
 
-function userAvailavbility(event, element){
+function userAvailavbility(event, element) {
 
     const saveLastUserName = (elementValue) => {
         window.localStorage.setItem(
             "lastUserName", elementValue
         )
     }
-    
+
 
     const removeUserMention = (element) => {
-        if(element.value.toString().includes("@")){
+        if (element.value.toString().includes("@")) {
             element.value = element.value.replace("@", "_")
         }
     }
@@ -47,47 +47,47 @@ function userAvailavbility(event, element){
         )
     }
 
-    if(element.name == "username"){
-        if(!checkImportantKeys(event)){
+    if (element.name == "username") {
+        if (!checkImportantKeys(event)) {
             event.preventDefault()
-        }else{
+        } else {
 
             return 0;
         }
-        
+
 
         const checkKey = (keyPressed, value) => {
             return keyPressed.code.toString().includes(value)
         }
 
-        if(checkKey(event, "Key") || checkKey(event, "Numpad") || checkKey(event, "Digit")){    
+        if (checkKey(event, "Key") || checkKey(event, "Numpad") || checkKey(event, "Digit")) {
             element.value += event.key.toString()
         }
 
-        if(event.altKey){
+        if (event.altKey) {
             element.value += event.key.toString()
         }
 
         removeUserMention(element)
         saveLastUserName(element.value)
-        if(element.value.toString().length > 0){
+        if (element.value.toString().length > 0) {
 
-            
+
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", `/user/exists/${element.value}`, false ); // false for synchronous request
-            xmlHttp.send( null );
-            
-            window.localStorage.setItem("userNameExists" , xmlHttp.responseText)
+            xmlHttp.open("GET", `/user/exists/${element.value}`, false); // false for synchronous request
+            xmlHttp.send(null);
+
+            window.localStorage.setItem("userNameExists", xmlHttp.responseText)
         }
-    } 
+    }
 }
 
 function renderLoginForm() {
     const loginForm = new FormElement(
         "login",
         [
-            { type: "input", "placeHolder": "username", "name": "username" , "onKeyDown" : userAvailavbility},
-            { type: "password", "placeHolder": "password", "name": "password" , "onKeyDown" : userAvailavbility},
+            { type: "input", "placeHolder": "username", "name": "username", "onKeyDown": userAvailavbility },
+            { type: "password", "placeHolder": "password", "name": "password", "onKeyDown": userAvailavbility },
         ],
         "/login/",
         "Login",
@@ -97,7 +97,7 @@ function renderLoginForm() {
 
 const retrieveLastUserName = (element) => {
     const lastTypesUsername = window.localStorage.getItem('lastUserName')
-    if(lastTypesUsername != null){
+    if (lastTypesUsername != null) {
         element.value = lastTypesUsername.toString()
     }
 }
@@ -114,13 +114,13 @@ if (window.location.pathname == "/") {
 
     userNameElement.addEventListener('keydown', (event) => {
         userAvailavbility(event, userNameElement)
-    } )
+    })
 
     userNameElement.addEventListener('paste', (event) => {
         console.log("Pasting username ?? too bad")
     })
 
-    
+
 
     const submitButton = new FormSubmissionButton(
         findButtonByType(

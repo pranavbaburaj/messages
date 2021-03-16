@@ -23,7 +23,7 @@ export const cannotContainUsername = (key) => {
         key.shiftKey && key.keyCode == 188 ||
         key.shiftKey && key.keyCode == 190 ||
         key.shiftKey && key.keyCode == 186
-        )
+    )
 }
 
 
