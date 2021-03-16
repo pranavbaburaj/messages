@@ -39,14 +39,13 @@ def login_api(request):
     if request.method == "POST":
         return HttpResponse("Hi")
     else:
-        return HttpResponse(json.dumps({
-            "error" : f"{request.method} not supported"
-        }), content_type='application/json')
+        return HttpResponse(json.dumps(
+            {"error": f"{request.method} not supported"}),
+                            content_type='application/json')
+
 
 def has_user(request, username):
-    return HttpResponse(
-        len(Users.objects.filter(username=username)) is not 0
-    )
+    return HttpResponse(len(Users.objects.filter(username=username)) is not 0)
 
 
 def register(request):
