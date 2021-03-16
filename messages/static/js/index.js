@@ -1,5 +1,6 @@
 import { FormElement } from "./form.js"
 import { cannotContainUsername } from "./constants.js"
+import { FormSubmissionButton, findButtonByType } from "./submit.js"
 
 // compile markdown into html code to be rendered
 // inside of a div element
@@ -99,9 +100,14 @@ if (window.location.pathname == "/") {
         userAvailavbility(event, userNameElement)
     } )
 
-    const submitButton = FormSubmissionButton(
-        document.getElementsByTagName('button'),
+    const submitButton = new FormSubmissionButton(
+        findButtonByType(
+            document.getElementsByTagName('button'),
+            "submit",
+            "Login"
+        ),
         "/login/",
+        {}
     )
 
 }
