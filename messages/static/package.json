@@ -1,0 +1,14 @@
+{
+  "name": "messages",
+  "version": "1.0.0",
+  "description": "A messaging app",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pranav Baburaj",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^2.0.1"
+  }
+}
