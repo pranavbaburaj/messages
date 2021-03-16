@@ -25,5 +25,6 @@ urlpatterns = [
     path('compose/', compose),
     path('view/from/<from_person>/<to_person>/<id>/', view),
     path('delete/<to_person>/<id>/', delete),
-    path('user/exists/<username>', has_user)
+    path('user/exists/<username>/', has_user),
+    path('is_valid_user/', login_api)
 ]

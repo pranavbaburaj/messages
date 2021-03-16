@@ -41,10 +41,11 @@ export class FormElement {
         const template = `
         <div class="${this.className}">
             <form>
+                {% csrf_token %}
                 ${this.getAllFields()}
             </form>
             <div class="fi">
-                    <button type="submit">${this.buttonText()}</button>
+                    <button type="submit" id="${this.buttonText()}">${this.buttonText()}</button>
             </div>
         </div>
         `

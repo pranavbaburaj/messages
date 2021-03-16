@@ -1,6 +1,11 @@
 import { FormElement } from "./form.js"
 import { cannotContainUsername } from "./constants.js"
 
+// compile markdown into html code to be rendered
+// inside of a div element
+import "../node_modules/marked/marked.min.js";
+
+
 // selectors
 const LOGIN_FORM_CONTAINER = document.querySelector(".login-container")
 
@@ -77,7 +82,7 @@ function renderLoginForm() {
             { type: "password", "placeHolder": "password", "name": "password" , "onKeyDown" : userAvailavbility},
         ],
         "/login/",
-        "Login"
+        "Login",
     )
     loginForm.renderFormTemplate(LOGIN_FORM_CONTAINER)
 }
@@ -93,6 +98,12 @@ if (window.location.pathname == "/") {
     userNameElement.addEventListener('keydown', (event) => {
         userAvailavbility(event, userNameElement)
     } )
+
+    const submitButton = FormSubmissionButton(
+        document.getElementsByTagName('button'),
+        "/login/",
+    )
+
 }
 
 

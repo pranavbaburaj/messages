@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Users
 from django.contrib import messages
+import json as json
 
 
 def index(request):
@@ -31,6 +32,16 @@ def login(request):
         messages.add_message(request, messages.INFO,
                              'Wrong username or password')
         return HttpResponseRedirect("/")
+
+
+def login_api(request):
+
+    if request.method == "POST":
+        return HttpResponse("Hi")
+    else:
+        return HttpResponse(json.dumps({
+            "error" : f"{request.method} not supported"
+        }), content_type='application/json')
 
 def has_user(request, username):
     return HttpResponse(
