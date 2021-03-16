@@ -8,6 +8,24 @@ export function findButtonByType(buttonList, buttonType, buttonText){
     return null
 }
 
+const getInputByName = (inputBoxes, findName) => {
+    let matchingBoxList = new Array()
+
+    for(let idx=0; idx<inputBoxes.length; idx++){
+        const currentElement = inputBoxes[idx]
+        if(currentElement.name == findName.toString()){
+            matchingBoxList.push(
+                currentElement
+            )
+        }
+    }
+
+    if(matchingBoxList.length > 1){
+        throw Error(`Expected a single list, but got ${matchingBoxList.length}`)
+    }
+
+    return matchingBoxList[0]
+}
 
 export class FormSubmissionButton {
     constructor(buttonObject, postDataUrl, parameters){
@@ -28,7 +46,14 @@ export class FormSubmissionButton {
             )
             buttonObject.addEventListener('click', function(event) {
                 const inputBoxes = document.getElementsByTagName("input")
-                console.log(inputBoxes)
+                if(inputBoxes.length == 2){
+                    let userName = getInputByName(inputBoxes, "username")
+                    let passwordText = getInputByName(inputBoxes, "password")
+
+                    console.log(userName, passwordText)
+                } else {
+                    return null;
+                }
             })
         }
     }
