@@ -50,7 +50,16 @@ export class FormSubmissionButton {
                     let userName = getInputByName(inputBoxes, "username")
                     let passwordText = getInputByName(inputBoxes, "password")
 
-                    console.log(userName, passwordText)
+                    if(userName.value.length == 0 || passwordText.value.length == 0){
+                        return null
+                    } else {
+                        userName.value = userName.value.toString().replace(
+                            " ", "_"
+                        )
+
+                        const userExists = window.localStorage.getItem("userNameExists")
+                        console.log(userExists)
+                    }
                 } else {
                     return null;
                 }

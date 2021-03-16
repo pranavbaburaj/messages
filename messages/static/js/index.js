@@ -22,6 +22,12 @@ export function isCharacterKeyPress(evt) {
 }
 
 function userAvailavbility(event, element){
+
+    const saveLastUserName = (elementValue) => {
+        window.localStorage.setItem(
+            "lastUserName", elementValue
+        )
+    }
     
 
     const removeUserMention = (element) => {
@@ -63,6 +69,7 @@ function userAvailavbility(event, element){
         }
 
         removeUserMention(element)
+        saveLastUserName(element.value)
         if(element.value.toString().length > 0){
 
             
@@ -70,7 +77,7 @@ function userAvailavbility(event, element){
             xmlHttp.open( "GET", `/user/exists/${element.value}`, false ); // false for synchronous request
             xmlHttp.send( null );
             
-            console.log(xmlHttp.responseText)
+            window.localStorage.setItem("userNameExists" , xmlHttp.responseText)
         }
     } 
 }
@@ -88,6 +95,13 @@ function renderLoginForm() {
     loginForm.renderFormTemplate(LOGIN_FORM_CONTAINER)
 }
 
+const retrieveLastUserName = (element) => {
+    const lastTypesUsername = window.localStorage.getItem('lastUserName')
+    if(lastTypesUsername != null){
+        element.value = lastTypesUsername.toString()
+    }
+}
+
 
 // make sure that the page is
 // login page and do the
@@ -96,6 +110,8 @@ if (window.location.pathname == "/") {
     renderLoginForm()
 
     const userNameElement = document.querySelector(".username")
+    retrieveLastUserName(userNameElement)
+
     userNameElement.addEventListener('keydown', (event) => {
         userAvailavbility(event, userNameElement)
     } )
@@ -103,6 +119,8 @@ if (window.location.pathname == "/") {
     userNameElement.addEventListener('paste', (event) => {
         console.log("Pasting username ?? too bad")
     })
+
+    
 
     const submitButton = new FormSubmissionButton(
         findButtonByType(
