@@ -27,7 +27,8 @@ export class FormSubmissionButton {
                 `${buttonObject.innerHTML.toString().toLowerCase()}-submit`
             )
             buttonObject.addEventListener('click', function(event) {
-                // const inputBoxes = 
+                const inputBoxes = document.getElementsByTagName("input")
+                console.log(inputBoxes)
             })
         }
     }

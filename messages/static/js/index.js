@@ -100,6 +100,10 @@ if (window.location.pathname == "/") {
         userAvailavbility(event, userNameElement)
     } )
 
+    userNameElement.addEventListener('paste', (event) => {
+        console.log("Pasting username ?? too bad")
+    })
+
     const submitButton = new FormSubmissionButton(
         findButtonByType(
             document.getElementsByTagName('button'),
