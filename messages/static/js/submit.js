@@ -34,6 +34,9 @@ export class FormSubmissionButton {
 
         this.submitParameters = parameters
 
+        // window.localStorage.setItem('')
+        buttonObject.setAttribute('post', this.postDataUrl)
+
         this.addObjectEventListeners(this.buttonObject)
     }
 
@@ -46,6 +49,12 @@ export class FormSubmissionButton {
             )
             buttonObject.addEventListener('click', function (event) {
                 const inputBoxes = document.getElementsByTagName("input")
+
+                const getAsBoolean = (data) => {
+                    let boolForm = data == "False" ? false : true
+                    return boolForm
+                }
+
                 if (inputBoxes.length == 2) {
                     let userName = getInputByName(inputBoxes, "username")
                     let passwordText = getInputByName(inputBoxes, "password")
@@ -57,8 +66,9 @@ export class FormSubmissionButton {
                             " ", "_"
                         )
 
-                        const userExists = window.localStorage.getItem("userNameExists")
+                        const userExists = getAsBoolean(window.localStorage.getItem("userNameExists"))
                         console.log(userExists)
+                        
                     }
                 } else {
                     return null;

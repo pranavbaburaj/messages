@@ -55,11 +55,3 @@ export class FormElement {
 }
 
 
-const createFormSubmission = (csrkToken, requestMethod, route, formData) => {
-    // csrftoken = getCookie('csrftoken'); 
-    // var request = new XMLHttpRequest();
-    // request.open('POST', '/register');
-    // request.setRequestHeader("X-CSRFToken", csrftoken); 
-    // request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8"); 
-    // request.send("data");
-}

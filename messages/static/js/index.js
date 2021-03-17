@@ -8,6 +8,16 @@ import { getCookieElement } from "./csrf.js"
 // inside of a div element
 import "../node_modules/marked/marked.min.js";
 
+const createFormSubmission = (csrkToken, requestMethod, route, formData) => {
+    // csrftoken = getCookie('csrftoken'); 
+    // var request = new XMLHttpRequest();
+    // request.open('POST', '/register');
+    // request.setRequestHeader("X-CSRFToken", csrftoken); 
+    // request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8"); 
+    // request.send("data");
+}
+
+
 
 // selectors
 const LOGIN_FORM_CONTAINER = document.querySelector(".login-container")
@@ -109,7 +119,7 @@ const retrieveLastUserName = (element) => {
 // login page and do the
 // login form rendering
 if (window.location.pathname == "/") {
-    getCookieElement("csrftoken")
+
     renderLoginForm()
 
     const userNameElement = document.querySelector(".username")
