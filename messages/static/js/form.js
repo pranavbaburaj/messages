@@ -25,7 +25,7 @@ export class FormElement {
             </div>
             `
         }
-
+        
         return fieldTemplate.toString()
     }
 
@@ -41,7 +41,6 @@ export class FormElement {
         const template = `
         <div class="${this.className}">
             <form>
-                {% csrf_token %}
                 ${this.getAllFields()}
             </form>
             <div class="fi">
@@ -55,3 +54,12 @@ export class FormElement {
 
 }
 
+
+const createFormSubmission = (csrkToken, requestMethod, route, formData) => {
+    // csrftoken = getCookie('csrftoken'); 
+    // var request = new XMLHttpRequest();
+    // request.open('POST', '/register');
+    // request.setRequestHeader("X-CSRFToken", csrftoken); 
+    // request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8"); 
+    // request.send("data");
+}
