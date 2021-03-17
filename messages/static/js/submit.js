@@ -68,6 +68,8 @@ export class FormSubmissionButton {
 
                         const userExists = getAsBoolean(window.localStorage.getItem("userNameExists"))
                         console.log(userExists)
+
+                        if(!userExists){ showModalBox("Wrong username or password") }
                         
                     }
                 } else {

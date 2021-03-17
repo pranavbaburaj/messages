@@ -20,7 +20,10 @@ const createFormSubmission = (csrkToken, requestMethod, route, formData) => {
 
 
 // selectors
+const ERROR_MODAL_BOX = document.querySelector('#error-log')
 const LOGIN_FORM_CONTAINER = document.querySelector(".login-container")
+
+
 
 export const booleanValue = (string) => string === 'false' ? false : !!string
 
