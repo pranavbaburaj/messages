@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('./form-elements.css');
-@import url("./error.css");
-@import url("./alert.css");
+@import url('./error.css');
+@import url('./alert.css');
 
 :root {
   --foreground: #7289da;

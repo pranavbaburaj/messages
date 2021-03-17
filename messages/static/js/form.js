@@ -25,7 +25,7 @@ export class FormElement {
             </div>
             `
         }
-        
+
         return fieldTemplate.toString()
     }
 

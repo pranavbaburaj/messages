@@ -1,11 +1,11 @@
 .alert {
   padding: 20px;
-  background-color: #F9D7DA; /* Red */
-  color: #84202F;
+  background-color: #f9d7da; /* Red */
+  color: #84202f;
   margin-bottom: 15px;
   text-align: center;
   margin: 20px 20px 20px 20px;
-  border : 0.1px solid #84202F;
+  border: 0.1px solid #84202f;
   border-radius: 10px;
 }
 
@@ -25,4 +25,3 @@
 .closebtn:hover {
   color: black;
 }
-
