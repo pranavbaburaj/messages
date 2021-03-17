@@ -2,6 +2,8 @@ import { FormElement } from "./form.js"
 import { cannotContainUsername } from "./constants.js"
 import { FormSubmissionButton, findButtonByType } from "./submit.js"
 
+import { getCookieElement } from "./csrf.js"
+
 // compile markdown into html code to be rendered
 // inside of a div element
 import "../node_modules/marked/marked.min.js";
@@ -107,6 +109,7 @@ const retrieveLastUserName = (element) => {
 // login page and do the
 // login form rendering
 if (window.location.pathname == "/") {
+    getCookieElement("csrftoken")
     renderLoginForm()
 
     const userNameElement = document.querySelector(".username")
@@ -133,6 +136,8 @@ if (window.location.pathname == "/") {
     )
 
 }
+
+
 
 
 
