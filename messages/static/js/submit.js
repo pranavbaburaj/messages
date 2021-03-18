@@ -83,12 +83,12 @@ export class FormSubmissionButton {
                                 headers: {"Content-type": "application/json; charset=UTF-8", "X-CSRFToken": getCookieElement('csrftoken')}
                             }).then((response) => response.json()).then((data) => {
                                 if(parseInt(data.status) == 200){
-                                    window.localStorage.setItem('userData', {
-                                        username : data.username,
-                                        name : data.name
-                                    })
+                                    window.localStorage.setItem('username', data.username)
 
-                                    window.localStorage.setItem('lastUsername')
+                                    window.localStorage.setItem('lastUserName', null)
+                                    window.location.href = data.redirect
+                                } else if(parseInt(data.status) == 404){
+                                    showModalBox(data.error.toString())
                                 }
                             }).catch((error) => console.log(error))
                         }
