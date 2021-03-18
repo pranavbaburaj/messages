@@ -82,7 +82,14 @@ export class FormSubmissionButton {
                                 body : JSON.stringify(formData),
                                 headers: {"Content-type": "application/json; charset=UTF-8", "X-CSRFToken": getCookieElement('csrftoken')}
                             }).then((response) => response.json()).then((data) => {
-                                console.log(data)
+                                if(parseInt(data.status) == 200){
+                                    window.localStorage.setItem('userData', {
+                                        username : data.username,
+                                        name : data.name
+                                    })
+
+                                    window.localStorage.setItem('lastUsername')
+                                }
                             }).catch((error) => console.log(error))
                         }
                     }

@@ -43,9 +43,22 @@ def login_api(request):
         data = json.loads(request.body.decode('utf-8')) 
         
         username, password = str(data["username"]), str(data["password"])
-        print(colored.red(username))
+        user_data = Users.objects.filter(username=username, password=password)
 
-        return JsonResponse({"data" : "LOL"})
+        if(len(user_data) == 0):return JsonResponse({"status": 404, "error" : "User not found", "username" : None,
+            "name" : None,
+            "redirect" : None})
+        else:
+            real_user = Users.objects.get(username=username, password=password)
+            request.session['user'] = [real_user.name, real_user.username]
+
+        return JsonResponse({
+            "status" : 200,
+            "error" : None,
+            "username" : real_user.username,
+            "name" : real_user.name,
+            "redirect" : "/inbox/"
+        })
     else:
         return HttpResponse(json.dumps(
             {"error": f"{request.method} not supported"}),
