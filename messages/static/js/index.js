@@ -8,16 +8,6 @@ import { getCookieElement } from "./csrf.js"
 // inside of a div element
 import "../node_modules/marked/marked.min.js";
 
-const createFormSubmission = (csrkToken, requestMethod, route, formData) => {
-    // csrftoken = getCookie('csrftoken'); 
-    // var request = new XMLHttpRequest();
-    // request.open('POST', '/register');
-    // request.setRequestHeader("X-CSRFToken", csrftoken); 
-    // request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8"); 
-    // request.send("data");
-}
-
-
 
 // selectors
 const ERROR_MODAL_BOX = document.querySelector('#error-log')
@@ -112,7 +102,7 @@ function renderLoginForm() {
 
 const retrieveLastUserName = (element) => {
     const lastTypesUsername = window.localStorage.getItem('lastUserName')
-    if (lastTypesUsername != null) {
+    if (lastTypesUsername != "null" && lastTypesUsername != null) {
         element.value = lastTypesUsername.toString()
     }
 }
