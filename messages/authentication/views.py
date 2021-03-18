@@ -45,7 +45,7 @@ def login_api(request):
         username, password = str(data["username"]), str(data["password"])
         user_data = Users.objects.filter(username=username, password=password)
 
-        if(len(user_data) == 0):return JsonResponse({"status": 404, "error" : "User not found", "username" : None,
+        if(len(user_data) == 0):return JsonResponse({"status": 404, "error" : "Invalid username or password", "username" : None,
             "name" : None,
             "redirect" : None})
         else:
