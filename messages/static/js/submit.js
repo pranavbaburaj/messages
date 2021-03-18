@@ -70,24 +70,24 @@ export class FormSubmissionButton {
 
                         const userExists = getAsBoolean(window.localStorage.getItem("userNameExists"))
 
-                        if (!userExists) { 
-                            showModalBox("Wrong username or password") 
+                        if (!userExists) {
+                            showModalBox("Wrong username or password")
                         } else {
                             let formData = {
-                                username : userName.value,
-                                password : passwordText.value
+                                username: userName.value,
+                                password: passwordText.value
                             }
                             fetch(this.getAttribute('post'), {
-                                method : "POST",
-                                body : JSON.stringify(formData),
-                                headers: {"Content-type": "application/json; charset=UTF-8", "X-CSRFToken": getCookieElement('csrftoken')}
+                                method: "POST",
+                                body: JSON.stringify(formData),
+                                headers: { "Content-type": "application/json; charset=UTF-8", "X-CSRFToken": getCookieElement('csrftoken') }
                             }).then((response) => response.json()).then((data) => {
-                                if(parseInt(data.status) == 200){
+                                if (parseInt(data.status) == 200) {
                                     window.localStorage.setItem('username', data.username)
 
                                     window.localStorage.setItem('lastUserName', null)
                                     window.location.href = data.redirect
-                                } else if(parseInt(data.status) == 404){
+                                } else if (parseInt(data.status) == 404) {
                                     showModalBox(data.error.toString())
                                 }
                             }).catch((error) => console.log(error))

@@ -40,24 +40,29 @@ def login(request):
 def login_api(request):
 
     if request.method == "POST":
-        data = json.loads(request.body.decode('utf-8')) 
-        
+        data = json.loads(request.body.decode('utf-8'))
+
         username, password = str(data["username"]), str(data["password"])
         user_data = Users.objects.filter(username=username, password=password)
 
-        if(len(user_data) == 0):return JsonResponse({"status": 404, "error" : "Invalid username or password", "username" : None,
-            "name" : None,
-            "redirect" : None})
+        if (len(user_data) == 0):
+            return JsonResponse({
+                "status": 404,
+                "error": "Invalid username or password",
+                "username": None,
+                "name": None,
+                "redirect": None
+            })
         else:
             real_user = Users.objects.get(username=username, password=password)
             request.session['user'] = [real_user.name, real_user.username]
 
         return JsonResponse({
-            "status" : 200,
-            "error" : None,
-            "username" : real_user.username,
-            "name" : real_user.name,
-            "redirect" : "/inbox/"
+            "status": 200,
+            "error": None,
+            "username": real_user.username,
+            "name": real_user.name,
+            "redirect": "/inbox/"
         })
     else:
         return HttpResponse(json.dumps(
