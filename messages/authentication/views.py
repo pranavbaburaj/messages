@@ -37,7 +37,8 @@ def login(request):
 def login_api(request):
 
     if request.method == "POST":
-        return HttpResponse("Hi")
+        post_data = json.loads(request.body.decode("utf-8"))
+        return HttpResponse(post_data)
     else:
         return HttpResponse(json.dumps(
             {"error": f"{request.method} not supported"}),

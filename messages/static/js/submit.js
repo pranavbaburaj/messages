@@ -1,3 +1,5 @@
+import { getCookieElement } from "./csrf.js"
+
 export function findButtonByType(buttonList, buttonType, buttonText) {
     for (let index = 0; index < buttonList.length; index++) {
         const currentButtonElement = buttonList[index]
@@ -67,10 +69,22 @@ export class FormSubmissionButton {
                         )
 
                         const userExists = getAsBoolean(window.localStorage.getItem("userNameExists"))
-                        console.log(userExists)
 
-                        if (!userExists) { showModalBox("Wrong username or password") }
-
+                        if (!userExists) { 
+                            showModalBox("Wrong username or password") 
+                        } else {
+                            let formData = {
+                                username : userName.value,
+                                password : passwordText.value
+                            }
+                            fetch(this.getAttribute('post'), {
+                                method : "POST",
+                                body : JSON.stringify(formData),
+                                headers: {"Content-type": "application/json; charset=UTF-8", "X-CSRFToken": getCookieElement('csrftoken')}
+                            }).then((response) => response.json()).then((data) => {
+                                console.log(data)
+                            }).catch((error) => console.log(error))
+                        }
                     }
                 } else {
                     return null;

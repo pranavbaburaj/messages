@@ -144,11 +144,13 @@ if (window.location.pathname == "/") {
             "submit",
             "Login"
         ),
-        "/login/",
+        "/is_valid_user/",
         {}
     )
 
 }
+
+
 
 
 
