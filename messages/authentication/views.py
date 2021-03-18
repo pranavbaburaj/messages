@@ -1,8 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.template import RequestContext
 from .models import Users
 from django.contrib import messages
 import json as json
+
+from clint.textui import colored
 
 
 def index(request):
@@ -37,8 +40,12 @@ def login(request):
 def login_api(request):
 
     if request.method == "POST":
-        post_data = json.loads(request.body.decode("utf-8"))
-        return HttpResponse(post_data)
+        data = json.loads(request.body.decode('utf-8')) 
+        
+        username, password = str(data["username"]), str(data["password"])
+        print(colored.red(username))
+
+        return JsonResponse({"data" : "LOL"})
     else:
         return HttpResponse(json.dumps(
             {"error": f"{request.method} not supported"}),
