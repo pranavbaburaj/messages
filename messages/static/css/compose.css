@@ -1,0 +1,33 @@
+/*
+compose new button 
+*/
+.compose-new-btn,
+.logout {
+  background-color: var(--foreground);
+  outline: none;
+  border: none;
+  width: 15%;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-family: Roboto;
+  font-style: bold;
+  transition: opacity 0.3s;
+}
+
+.compose-new-btn:hover {
+  opacity: 0.8;
+}
+
+.logout {
+  width: 15%;
+  margin-left: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    .compose-new-btn, .logout {
+        width : 20%;
+    }
+}

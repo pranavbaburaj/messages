@@ -1,3 +1,9 @@
+@import url("./compose.css");
+
+:root {
+  --foreground : #7289da;
+}
+
 .container {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
