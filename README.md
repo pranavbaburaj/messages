@@ -2,6 +2,8 @@
 ***A simple messaging application***
 
 ## Commands
+`cd messages/static` and `npm install`
+
 Run the application
 `python manage.py runserver`
 
