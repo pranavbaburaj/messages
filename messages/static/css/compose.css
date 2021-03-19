@@ -17,6 +17,10 @@ compose new button
   transition: opacity 0.3s;
 }
 
+.compose-new-btn:disabled, .logout:disabled {
+    opacity: 0.7;
+}
+
 .compose-new-btn:hover {
   opacity: 0.8;
 }

@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 # Create your views here.
 def inbox(request):
-    if request.session['user']:
+    if 'user' in request.session:
         data = ""
 
         if Messages.objects.filter(to_person=request.session['user'][1]):
