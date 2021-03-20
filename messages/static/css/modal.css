@@ -120,19 +120,24 @@ input[type="text"], textarea {
 textarea {
   resize: none;
 }
-/* Style the submit button with a specific background color etc */
-input[type='submit'] {
-  background-color: #4caf50;
-  color: white;
-  padding: 12px 20px;
+
+input[type="submit"]{
+  background-color: var(--foreground);
+  outline: none;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  width: 50%;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-family: Roboto;
+  font-style: bold;
+  transition: opacity 0.3s;
 }
 
-/* When moving the mouse over the submit button, add a darker green color */
 input[type='submit']:hover {
-  background-color: #45a049;
+  opacity: 0.9;
 }
 
 .compose-message {
