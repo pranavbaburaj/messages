@@ -24,3 +24,9 @@ closeComposeModal.addEventListener('click', function(event) {
 
 // the logout button
 let logoutAction = new LogoutAction(document.querySelector('.logout'))
+
+window.addEventListener('keydown', function(event) {
+    if(event.shiftKey && event.keyCode == 67){
+        switchComposeModalDisplay("block")
+    }
+})

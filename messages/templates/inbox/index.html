@@ -13,20 +13,15 @@
         <button class="compose-new-btn">Compose</button>
         <button class="logout">Logout</button></a>
     </div>
-    <div class="compose-new-modal-box" class="modal">
+    <div class="compose-new-modal-box" class="modal" style="display:none;">
         <div class="modal-content">
           <span class="close">&times;</span>
-          <p>Compose</p>
+          <p class="compose-message">Compose</p>
           <div class="container">
             <form action="/compose/" method="POST">
               {% csrf_token %}
-          
-              <label for="fname">To</label>
               <input type="text" name="to" id="to" name="firstname" placeholder="To" required/>
-          
-              <label for="lname">Title</label>
               <input type="text" name="title" id="title" name="lastname" placeholder="Title">
-              <label for="country">Body</label>
               <textarea id="subject" name="body" placeholder="Write something.." style="height:200px"></textarea>
               <input type="submit" value="Submit">
             </form>

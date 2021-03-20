@@ -5,8 +5,9 @@
 }
 
 .container {
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
+    border: none;
+    outline: none;
+    background-color: #2F3136;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
@@ -76,11 +77,13 @@
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background-color: #2F3136;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    border: none;
+    outline: none;
+    width: 80%; 
+    box-shadow: rgba(0, 0, 0, 0.4);
   }
   
   /* The Close Button */
@@ -124,3 +127,11 @@ input[type=text], select, textarea {
     background-color: #45a049;
   }
   
+
+  .compose-message {
+    color : var(--foreground);
+    text-align: center;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 700;
+  }
