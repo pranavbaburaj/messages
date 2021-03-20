@@ -17,11 +17,11 @@ const switchComposeModalDisplay = (display) => {
 
 switchComposeModalDisplay("none")
 
-composeButton.addEventListener('click', function(event) {
+composeButton.addEventListener('click', function (event) {
     switchComposeModalDisplay("block")
 })
 
-closeComposeModal.addEventListener('click', function(event) {
+closeComposeModal.addEventListener('click', function (event) {
     switchComposeModalDisplay("none")
 })
 
@@ -29,19 +29,19 @@ closeComposeModal.addEventListener('click', function(event) {
 // the logout button
 let logoutAction = new LogoutAction(document.querySelector('.logout'))
 
-window.addEventListener('keydown', function(event) {
-    if(event.shiftKey && event.keyCode == 67){
+window.addEventListener('keydown', function (event) {
+    if (event.shiftKey && event.keyCode == 67) {
         switchComposeModalDisplay("block")
     }
 })
 
-toInputBox.addEventListener('keydown', function(event) {
-    if(toInputBox.value.toString().length == 0){
+toInputBox.addEventListener('keydown', function (event) {
+    if (toInputBox.value.toString().length == 0) {
         console.log("yo")
         return 0;
     }
 
-    if(!toInputBox.value.toString().startsWith("@")){
+    if (!toInputBox.value.toString().startsWith("@")) {
         log.innerHTML = "Username should start with an @ sign"
     } else {
         log.innerHTML = ""

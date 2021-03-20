@@ -1,6 +1,5 @@
 @import url('./compose.css');
 
-
 :root {
   --foreground: #7289da;
 }
@@ -65,7 +64,7 @@ p {
 }
 .modal {
   display: none; /* Hidden by default */
-  position: fixed; 
+  position: fixed;
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
@@ -74,7 +73,7 @@ p {
   overflow: auto; /* Enable scroll if needed */
   /* background-color: rgb(0, 0, 0); /* Fallback color */
   /* background-color: rgba(0, 0, 0, 0.4); Black w/ opacity */
-  bottom : 30%;
+  bottom: 30%;
 }
 
 /* Modal Content/Box */
@@ -94,7 +93,7 @@ p {
   float: right;
   font-size: 28px;
   font-weight: bold;
-  margin-top : 0px;
+  margin-top: 0px;
 }
 
 .close:hover,
@@ -104,7 +103,8 @@ p {
   cursor: pointer;
 }
 /* Style inputs with type="text", select elements and textareas */
-input[type="text"], textarea {
+input[type='text'],
+textarea {
   background-color: var(--background);
   border: none;
   outline: none;
@@ -113,15 +113,15 @@ input[type="text"], textarea {
   font-family: Roboto;
   border-radius: 6px;
   color: var(--foreground);
-  margin : 10px 10px 10px 10px;
-  width : 80%;
+  margin: 10px 10px 10px 10px;
+  width: 80%;
 }
 
 textarea {
   resize: none;
 }
 
-input[type="submit"]{
+input[type='submit'] {
   background-color: var(--foreground);
   outline: none;
   border: none;
@@ -160,7 +160,7 @@ input[type='submit']:hover {
 }
 
 .log {
-  color : #e0566b;
+  color: #e0566b;
   font-size: 15px;
   font-weight: 300;
 }
