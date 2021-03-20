@@ -5,6 +5,10 @@ let composeModal = document.querySelector(".compose-new-modal-box");
 let composeButton = document.querySelector(".compose-new-btn");
 let closeComposeModal = document.getElementsByClassName("close")[0];
 
+// log error message
+let log = document.querySelector('.log')
+
+
 
 // change the modal style to the parameter
 const switchComposeModalDisplay = (display) => {
@@ -30,3 +34,4 @@ window.addEventListener('keydown', function(event) {
         switchComposeModalDisplay("block")
     }
 })
+
