@@ -8,7 +8,7 @@ let closeComposeModal = document.getElementsByClassName("close")[0];
 // log error message
 let log = document.querySelector('.log')
 
-
+let toInputBox = document.querySelector("#to")
 
 // change the modal style to the parameter
 const switchComposeModalDisplay = (display) => {
@@ -35,3 +35,15 @@ window.addEventListener('keydown', function(event) {
     }
 })
 
+toInputBox.addEventListener('keydown', function(event) {
+    if(toInputBox.value.toString().length == 0){
+        console.log("yo")
+        return 0;
+    }
+
+    if(!toInputBox.value.toString().startsWith("@")){
+        log.innerHTML = "Username should start with an @ sign"
+    } else {
+        log.innerHTML = ""
+    }
+})

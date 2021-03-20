@@ -155,7 +155,7 @@ input[type='submit']:hover {
 }
 
 .log {
-  color : red;
+  color : #e0566b;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 300;
 }
