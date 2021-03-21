@@ -29,7 +29,10 @@ export class BodyTextArea {
                     this.log.innerHTML = `Only  ${this.lengthLimit} words in body`
                     return 0;
                 }
+                window.localStorage.setItem('body', this.textArea.value.toString())
             }
+
+            window.localStorage.setItem('body', this.textArea.value.toString())
 
             this.log.innerHTML = ``
             this.updateTextAreaLabel()
