@@ -1,4 +1,5 @@
 import { LogoutAction } from "../logout.js"
+import { BodyTextArea } from './textarea.js'
 
 // the dom elements to add event listeners
 let composeModal = document.querySelector(".compose-new-modal-box");
@@ -11,7 +12,7 @@ let log = document.querySelector('.log')
 let toInputBox = document.querySelector("#to")
 let titleBox = document.querySelector("#title")
 
-const replaceBoxValue = (inputBox, localStorageKey) => {
+export const replaceBoxValue = (inputBox, localStorageKey) => {
     const data = window.localStorage.getItem(localStorageKey)
     if(data != null || data != undefined){
         inputBox.value = data.toString()
@@ -27,6 +28,8 @@ let textArea = document.querySelector("#subject")
 let textAreaCharacterLabel = document.querySelector(".char")
 
 replaceBoxValue(textArea, "body")
+
+const textareaWidget = new BodyTextArea(textArea, "body", 5000, textAreaCharacterLabel) 
 
 // change the modal style to the parameter
 const switchComposeModalDisplay = (display) => {
