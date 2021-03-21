@@ -9,6 +9,24 @@ let closeComposeModal = document.getElementsByClassName("close")[0];
 let log = document.querySelector('.log')
 
 let toInputBox = document.querySelector("#to")
+let titleBox = document.querySelector("#title")
+
+const replaceBoxValue = (inputBox, localStorageKey) => {
+    const data = window.localStorage.getItem(localStorageKey)
+    if(data != null || data != undefined){
+        inputBox.value = data.toString()
+    }
+}
+
+replaceBoxValue(toInputBox, "to")
+replaceBoxValue(titleBox, "title")
+
+
+// form textarea object and related objects
+let textArea = document.querySelector("#subject")
+let textAreaCharacterLabel = document.querySelector(".char")
+
+replaceBoxValue(textArea, "body")
 
 // change the modal style to the parameter
 const switchComposeModalDisplay = (display) => {
@@ -37,7 +55,6 @@ window.addEventListener('keydown', function (event) {
 
 toInputBox.addEventListener('keydown', function (event) {
     if (toInputBox.value.toString().length == 0) {
-        console.log("yo")
         return 0;
     }
 
@@ -46,4 +63,10 @@ toInputBox.addEventListener('keydown', function (event) {
     } else {
         log.innerHTML = ""
     }
+
+    window.localStorage.setItem('to', toInputBox.value.toString())
+})
+
+titleBox.addEventListener('keydown', (event) => {
+    window.localStorage.setItem('title', titleBox.value.toString())
 })
