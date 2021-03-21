@@ -1,10 +1,11 @@
-
+import { ALLOWED_KEY_CODES } from '../constants.js'
 export class BodyTextArea {
-    constructor(textArea, textAreaKey, lengthLimit, character){
+    constructor(textArea, textAreaKey, lengthLimit, character, log){
         this.textArea = textArea
         this.textAreaKey = textAreaKey
         this.lengthLimit = parseInt(lengthLimit) == NaN ? "∞" : parseInt(lengthLimit)
         this.label = character
+        this.log = log
 
         this.updateTextAreaLabel()
 
@@ -17,20 +18,20 @@ export class BodyTextArea {
     }
 
     updateTextAreaLabel = () => {
-        this.label.innerHTML = `${this.textArea.value.toString().length}/${this.lengthLimit}`
+        this.label.innerHTML = `${this.textArea.value.split(' ').length}/${this.lengthLimit}`
     }
 
     addEventListeners = () => {
         this.textArea.addEventListener('keydown', (event) => {
-            if(this.textArea.value.length >= this.lengthLimit){
-                if(this.textArea.value.length > this.lengthLimit){
-                    this.textArea.value = this.textArea.value.slice(
-                        0, this.lengthLimit
-                    )
-                    this.updateTextAreaLabel()
+            let lengthData = this.textArea.value.split(" ").length
+            if(lengthData >= this.lengthLimit){
+                if(lengthData > this.lengthLimit){
+                    this.log.innerHTML = `Only  ${this.lengthLimit} words in body`
+                    return 0;
                 }
             }
 
+            this.log.innerHTML = ``
             this.updateTextAreaLabel()
         })
     }

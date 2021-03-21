@@ -29,3 +29,12 @@ export const cannotContainUsername = (key) => {
 
 // the title of the PAGE
 export const MESSAGE_ME_TITLE = "MessageMe"
+
+export const ALLOWED_KEY_CODES = (event) => {
+    return (
+        event.ctrlKey && event.keyCode == 65 ||
+        event.ctrlKey && event.keyCode == 88 ||
+        event.ctrlKey && event.keyCode == 67 ||
+        event.keyCode == 8
+    )
+}

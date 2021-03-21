@@ -29,7 +29,9 @@ let textAreaCharacterLabel = document.querySelector(".char")
 
 replaceBoxValue(textArea, "body")
 
-const textareaWidget = new BodyTextArea(textArea, "body", 5000, textAreaCharacterLabel) 
+const textareaWidget = new BodyTextArea(textArea, "body", 1000, textAreaCharacterLabel, 
+    log
+) 
 
 // change the modal style to the parameter
 const switchComposeModalDisplay = (display) => {
