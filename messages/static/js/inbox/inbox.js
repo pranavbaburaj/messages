@@ -29,7 +29,7 @@ let textAreaCharacterLabel = document.querySelector(".char")
 
 replaceBoxValue(textArea, "body")
 
-const textareaWidget = new BodyTextArea(textArea, "body", 1000, textAreaCharacterLabel, 
+const textareaWidget = new BodyTextArea(textArea, "body", 500, textAreaCharacterLabel, 
     log
 ) 
 

@@ -18,7 +18,12 @@ export class BodyTextArea {
     }
 
     updateTextAreaLabel = () => {
-        this.label.innerHTML = `${this.textArea.value.split(' ').length}/${this.lengthLimit}`
+        this.label.innerHTML = `${this.textLimitExceed()}/${this.lengthLimit}`
+    }
+
+    textLimitExceed = () => {
+        // return this.textArea.value.split(' ').length
+        return this.textArea.value.split(' ').length > this.lengthLimit ? this.lengthLimit : this.textArea.value.split(' ').length;
     }
 
     addEventListeners = () => {
@@ -26,6 +31,7 @@ export class BodyTextArea {
             let lengthData = this.textArea.value.split(" ").length
             if(lengthData >= this.lengthLimit){
                 if(lengthData > this.lengthLimit){
+                    this.updateTextAreaLabel()
                     this.log.innerHTML = `Only  ${this.lengthLimit} words in body`
                     return 0;
                 }
