@@ -4,9 +4,7 @@ import { FormSubmissionButton, findButtonByType } from "./submit.js"
 
 import { getCookieElement } from "./csrf.js"
 
-// compile markdown into html code to be rendered
-// inside of a div element
-import "../node_modules/marked/marked.min.js";
+
 
 
 // selectors
