@@ -1,8 +1,8 @@
-from flask import views
+from flask import views, jsonify
 
 class IndexView(views.MethodView):
     def get(self):
-        return "The api is running"
+        return jsonify({"message" : "The api is running"})
 
     def post(self):
         return "Post reequests"
