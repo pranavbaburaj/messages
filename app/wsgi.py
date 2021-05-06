@@ -1,6 +1,9 @@
 import socket
+import dotenv
 
 from app import app, database
+
+dotenv.load_env()
 
 class ValidLocalPort(object):
     def __init__(self, current_port=5000):
