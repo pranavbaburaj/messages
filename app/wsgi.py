@@ -3,6 +3,9 @@ import socket
 from app import app, database
 from routes import ApplicationRoutes
 
+from views import IndexView
+from register import RegisterUserView
+
 
 routes = ApplicationRoutes(app, {
     "/" : IndexView,

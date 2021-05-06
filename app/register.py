@@ -16,17 +16,16 @@ class RegisterUserView(views.MethodView):
             return jsonify(status=404, message="No required fields")
 
         username, email, password = self.find_credentials(data)
-        try:
-            register = RegisterUser(
-                username,
-                Credentials(email, password),
-                Assets(str(None), str(None))
-            ).register_new_user()
+        register = RegisterUser(
+            username,
+            Credentials(email, password),
+            Assets(str(None), str(None))
+        ).register_new_user(username)
 
-            return jsonify(status=200, message="Success")
-        except Exception as exception_message:
-            return jsonify(status=404, message=exception_message)
-        return jsonify(request.values)
+        if isinstance(register, str):
+            return jsonify(status=200, message=register)
+
+        return jsonify(status=404, message="Success")
 
     def search_required_fields(self, required, data):
         for required_field in required:

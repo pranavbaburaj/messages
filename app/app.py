@@ -4,9 +4,6 @@ from flask_cors import CORS as cors
 
 from config import Config
 
-from views import IndexView
-from register import RegisterUserView
-
 app = Flask(__name__)
 app.config.from_object(Config)
 

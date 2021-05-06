@@ -15,6 +15,7 @@ class Users(database.Model):
     def __repr__(self):
         return "<Users>"
 
+
 class Credentials(object):
     def __init__(self, email, password):
         self.email = email
@@ -58,10 +59,10 @@ class RegisterUser(object):
 
     def register_new_user(self, username):
         if self.__find_username_availability(username):
-            raise ValueError("User already exists")
+            return "User already exist"
 
         if self.__find_email_availability(self.credentials.email):
-            raise ValueError("Email already in use")
+            return "Email already taken"
 
         identifier = UniqueUserIdentifier().create_unique_identifier()
         user = Users(
@@ -75,6 +76,8 @@ class RegisterUser(object):
 
         database.session.add(user)
         database.session.commit()
+
+        return user
 
     def __find_username_availability(self, username):
         usernames = [user.username for user in Users.query.order_by(Users.username).all()]
