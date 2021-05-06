@@ -1,9 +1,14 @@
 import socket
-import dotenv
 
 from app import app, database
+from routes import ApplicationRoutes
 
-dotenv.load_env()
+
+routes = ApplicationRoutes(app, {
+    "/" : IndexView,
+    "/register" : RegisterUserView
+})
+
 
 class ValidLocalPort(object):
     def __init__(self, current_port=5000):
