@@ -5,11 +5,13 @@ from routes import ApplicationRoutes
 
 from views import IndexView
 from register import RegisterUserView
+from login import LoginUserView
 
 
 routes = ApplicationRoutes(app, {
     "/" : IndexView,
-    "/register" : RegisterUserView
+    "/register" : RegisterUserView,
+    "/login" : LoginUserView
 })
 
 

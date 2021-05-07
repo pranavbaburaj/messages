@@ -10,6 +10,8 @@ app.config.from_object(Config)
 database = SQLAlchemy(app)
 application_cors = cors(app)
 
+app.secret_key = "983mkjc89eic9ic"
+
 
 
 
