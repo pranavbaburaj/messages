@@ -21,6 +21,8 @@ class AuthenticateUser(object):
             "uuid" : user.uuid
         })
 
+        print(session)
+
         return True
 
 class LoginUserView(views.MethodView):
